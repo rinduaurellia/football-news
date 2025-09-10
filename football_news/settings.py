@@ -29,9 +29,11 @@ SECRET_KEY = 'django-insecure-4i_mma%5(+s0q)2)w$#(!*i=5rx2#k*vjqn*_s&e58^q(o_9%3
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 DEBUG = True
 
-...
+
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "rindu-aurellia-footballnews.pbp.cs.ui.ac.id"]
-...
+CSRF_TRUSTED_ORIGINS = [
+    "https://rindu.aurellia-football-news.pbp.cs.ui.ac.id"
+]
 
 # Application definition
 
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'football_news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
